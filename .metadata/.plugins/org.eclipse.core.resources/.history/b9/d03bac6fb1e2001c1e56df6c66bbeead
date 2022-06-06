@@ -1,0 +1,12 @@
+package com.apolis.main;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		
+		BeanFactory fact = new XmlBeanFactory(new 
+				ClassPathResource("com/apolis/common/application-context.xml"));
+		Employee emp = (Employee) factory.getBean("employee");
+	}
+
+}

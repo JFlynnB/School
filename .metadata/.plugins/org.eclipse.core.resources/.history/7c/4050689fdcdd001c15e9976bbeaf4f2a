@@ -1,0 +1,43 @@
+
+package com.apolis.javabasicsDay5_May24;
+
+/**
+ * 4. Implement join method.
+ *
+ */
+public class MultiThreadFour {
+
+	public static void main(String[] args) {
+		
+		Thread thread01 = new Thread(new RunnableFour(), "01");
+		Thread thread02 = new Thread(new RunnableFour(), "02");
+		Thread thread03 = new Thread(new RunnableFour(), "03");
+		
+		thread01.start();
+		thread02.start();
+		try {
+			thread01.join();    //join() waits for the specified thread to die before continuing.
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		thread03.start();
+	}
+
+}
+
+class RunnableFour implements Runnable{
+
+	@Override
+	public void run() {
+		
+		for(int x = 1; x < 6; x++) {
+			System.out.println(x + " seconds on Thread " + Thread.currentThread().getName());
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}

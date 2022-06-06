@@ -1,0 +1,10 @@
+package day11.Streams;
+
+public class EIGHT_Filter {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

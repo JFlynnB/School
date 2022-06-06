@@ -1,0 +1,39 @@
+package com.apolis.javabasicsDay7_May26;
+
+/* Implement lambda expressions in all of these forms
+ * 
+ * 1.(int x,int y) -> { int z = x+y; System.out.println(z);}
+ * 
+ * 2.(x,y) -> {int z =x+y;System.out.println(z);}
+ * 
+ * 3. x -> { int y = x*x; System.out.println(y);}   
+ * 
+ * 4. x -> System.out.println(x);  
+ * 
+ * 5. x -> x*x;
+ */
+
+public class ONE_Lambdas {
+
+	public static void main(String[] args) {
+		
+		Two repeater = (int x, String y) -> {
+			for(int i = 0; i < x; i++)
+				System.out.println(y);
+		};
+		repeater.display(3, "Horray! ");
+		
+		Two splitter = (x, y) -> {
+			System.out.println(y.substring(0, x));
+			System.out.println(y.substring(x));
+		};
+		splitter.display(4, "Billinghurst");
+		
+		Two squarer = (int x, String y) -> {
+			int z = x * x;
+			System.out.println(y + z);
+		};
+		squarer.display(3, "3 times 3 is equal to ");
+	}
+
+}

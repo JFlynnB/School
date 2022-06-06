@@ -1,0 +1,61 @@
+package com.apolis.javabasicsDay6_May25;
+
+/* 1.implements volatile keyword example.  */
+public class OneVolatile {
+
+	
+	
+	public static void main(String[] args) {
+		
+		//boolean stillAlive = true;
+		Lungs lungs = new Lungs();
+		Thread brainStem = new Thread(new Runnable(){
+			public void run() {
+				while(true) 
+				{
+
+						
+						if(lungs.lungsFull) {
+							System.out.println("Breath in!");
+						}
+						else {
+							System.out.println("Breath out!");
+						}
+						try {
+							Thread.sleep(1200);
+						}catch(InterruptedException ie) {
+							System.out.println("You died unexpectedly. :'(");
+						}
+						
+				}
+			}
+		});
+		
+		Thread breathing = new Thread(new Runnable() {
+			public void run() {
+				while(true) 
+				{
+					
+						
+						if(lungs.lungsFull) {
+							System.out.println("Breathing out.");
+							lungs.lungsFull = false;
+						}else {
+							System.out.println("Breathing in.");
+							lungs.lungsFull = true;
+						}
+				}
+			}
+		});
+		
+		brainStem.start();
+		breathing.start();
+		
+	}
+}
+
+class Lungs {
+	public volatile static boolean lungsFull = false;
+	
+}
+

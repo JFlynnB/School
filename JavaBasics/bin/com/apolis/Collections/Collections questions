@@ -1,0 +1,56 @@
+
+
+Can we override static method in Java?
+	
+	We can declare static methods with the same signature in the subclass, 
+	but it is not considered overriding as there won’t be any run-time polymorphism. 
+	Hence the answer is ‘No’. 
+	If a derived class defines a static method with the same signature as a static 
+	method in the base class, the method in the derived class is hidden by the method in the base class. 
+	
+Can we overload a static method in Java? 
+
+	Yes we can. Same as normal overloading. 
+
+Can we override a private method in Java? 
+
+	No. They are not visible to an extending class and thus cannot be overridden.
+
+What is method hiding in Java? 
+What are the Fundamental principles of oops?
+What is the default class modifier?
+What are the different method access modifiers?
+What is the use of a final modifier on a class?
+
+	Cannot be extended.
+
+What is the use of a final modifier on a method?
+
+	Cannot be overridden by any extending classes.
+
+Which package is always imported by default?
+
+	java.lang
+
+Can I import same package/class twice? Will the JVM load the package twice at runtime?
+What is a Java package and how is it used?
+Explain the usage of Java packages.
+Difference between Public, Private, Default and Protected ?
+Can we reduce the visibility of the overridden method ?
+Which access specifier can be used with Class ?
+What will happen if we make the constructor private ?
+Can we declare an abstract method private ?
+
+	No. An abstract method would need to be implemented by a child class, 
+	but a child could not see it if it was private.
+
+What is strictfp keyword and when do you use it?
+
+	It restricts floating-point calculations in a way that makes them run the same on every platform.
+	You would use it when you need the answer to be the same everywhere more than you
+	need the answer to be as precise as possible.
+
+What is instanceOf operator?
+
+	tests if an object is of a specific class. Returns a boolean.
+

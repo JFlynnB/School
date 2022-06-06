@@ -1,0 +1,33 @@
+package day12.Singletons;
+
+public class TWO_Single {
+
+	public static void main(String[] args) {
+		
+		SecondSingle mySingle = SecondSingle.getIt();
+		mySingle.printMessage();
+
+	}
+
+}
+
+//This cannot be broken by multiple threads because the instantiating code is synchronized 
+class SecondSingle{
+	private static SecondSingle theObject;
+	private String message;
+	
+	private SecondSingle() {
+		this.message = "This Object has been instantiated." ;
+	}
+	
+	public static synchronized SecondSingle getIt() {
+		if(theObject == null) {
+			theObject = new SecondSingle();
+		}
+		return theObject;
+	}
+	
+	public void printMessage() {
+		System.out.println(message);
+	}
+}

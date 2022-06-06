@@ -1,0 +1,8 @@
+package com.apolis.javabasicsDay7_May26;
+
+/* Functional interface implementation */
+
+@FunctionalInterface
+public interface Two {
+	public void display(int x, String y);
+}

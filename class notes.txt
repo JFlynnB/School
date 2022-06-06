@@ -1,0 +1,651 @@
+Sachin, Anshul, Ram, Vivek, Raj, Heerendra - Trainers
+alok, alina - Contacts
+Java
+Java Spring, all modules
+Hibernate
+Spring JPA for database
+Springboard
+Cloud tech
+Docker
+
+Is the Bytecode verifier like a built in virus scanner?
+What is the difference between JRE and JVM?
+*Class loaders*
+only JRE1.8
+
+Static members can access anywhere in a class without using class name refence
+    used to store common sata to all objects.
+Instanced methods can only access within instances variables
+
+local variable are stored in stack memory.
+
+//Next time , make different examples for different concepts
+static and instance data members
+static and instance methods
+data shadowing
+single inheritance
+multilevel inheritance
+method overloading compile time polymorphism  //**get clarification on this
+method overriding runtime polymorphism
+
+lamda expressions and funtional interface
+dynamic binding:  Parent parent = new Child();
+method hiding: child and parent methods are both static with the same signature
+5diferent ways to override methods: see above, different access modifiers, different return types (IS-A Relationship), 
+super keyword cannot be called in static method.
+
+Association, find out the difference between Aggregation and Composition data hiding
+	Aggregation: Has-A relationship; Unidirectional (One-way) relationship; both Objects can survive individually; Weak Association
+	Composition: Part-Of relationship, dependent on each other, both object cannot exist independently. Strong Association
+A Text Editor owns a Buffer (composition). A Text Editor uses a File (aggregation). When the Text Editor is closed, the Buffer is destroyed but the File itself is not destroyed.
+class Contained {
+    public void disp() {
+        System.out.println("disp() of Contained A");
+    }
+}
+
+public class Container {
+    private Contained c;
+
+    //Composition
+    Container() {
+        c = new Contained(); 
+    }
+
+    //Association 
+    public Contained getC() {
+        return c;
+    }
+
+    public void setC(Contained c) {
+        this.c = c;
+    }     
+
+    public static void main(String[] args) {
+        Container container = new Container();
+        Contained contained = new Contained();
+        container.setC(contained);
+    } 
+}
+
+
+
+
+
+
+--------------------------------Day 2------------------------------------------------
+
+how to turn sysout to System.out.println?
+How to automatically generate constructors and get/set methods?
+Alt+Shift+S,S
+
+Constructor , classification of constructor
+new keyword,object creation
+Constructor overloading
+Instance block / Init Block
+Constructor chaining,Constructor overloading
+Static block 
+final keyword
+Blank final static and instance data member
+Package 
+Static import
+Call by value, call by reference , Copy constructor
+Access parent class method in case of method overriding
+
+Implement
+final class can't be inherited
+final method can't override
+final method can't be changed
+
+Blank final instance data member
+Blank final static data member  //must be initialized in static block.  Make a circle class with pi as data member
+Call by value / Call by reference / Copy Constructor?            outer.new InnerClass();
+static nested class with all implementations
+instance nested class with all implementations
+local inner class 
+1.Blank final instance data member
+2.Blank final static data member
+3.call by value and call reference / copy constructor
+4.static nested class with all implementations
+5.instance nested class with all implementations
+6.local inner class.
+
+
+---------------------------Day 3-----------------------------
+
+1. anonymous (inner)child class     Parent parent = new Parent() { //new implementation of parent with inheritance// };
+2. example of Type promotion         literals are ints, cannot implicity cast to byte or short
+3. Interfaces                     example idea: Sortable? 
+4. multiple inheritance in case of interface
+5. One class can extend a class and implements another interface at same time
+6. Abstract class     use shape classes with abstract area method
+
+7. Upcasting, Downcasting, (Boxing & Unboxing)
+8. Implement equals method
+9. Cloning
+10. Shallow cloning
+11. Deep Cloning
+
+Boxing: putting a variable into an Object (wrapper class)
+Unboxing:   int x = new Integer(30);
+Upcasting : casting a child as a parent        Parent x = new Child();
+downcasting:                                         Child y = (Child)x;  //This only works if it was originally the same type
+If you want to check what kind of object an object is, use instanceof keyword    (object instanceof Class)
+Marker interface: empty interface. Indicates whether a class includes a certain functionality
+equals method 
+You have to implement Clonable to use the clone() method. return super.clone(); you may need to throw or catch an exception. Cloneable is a Marker interface
+Shallow cloning: Object references refere to the same objects
+Deep cloning: all objects that an object references are also clones
+
+Exceptions  Brush up on this on my own over the weekend. **Explicitly said by Instructor** look at Day 8 document.
+Multi-Threading
+Collections              **Complete this on the weekend**
+
+
+test on 1st of june
+
+-------------------------------------Day 4-------------------------------
+1.  ArithmeticException handling or any other runtime exception.
+2.  Example of try, multiple catch, and finally block
+3.  Impl 10 implement from reference take from implementation file.
+4.  exception propagation using checked exception.
+5.  Exception handling use cases in case of method overriding
+6.  Create an Employee class with emp id, salary, name. have parameterized constructor.
+    create two objects with the same employee details. And check whether it gives you true or false 
+	then override equals method and basis of employee id return true or false.  Actually, we already did this.
+6.  Immutable class example implementation
+
+
+method overriding with checked vs unchecked exceptions
+
+Immutable classes:    Only immutable classes can be 'final'
+	*Are final classes
+	*Have all private fields
+	*Have no way to change those fields (no setter methods)
+	*include an all-arguement constructor
+	*use deep cloning for inheritly mutable object fields
+	*returns only references to deep-cloned objects
+	
+sub-packages need to be imported seperately.
+Kahled Mughal - Java book
+
+int[] x = new int[5];  or = new int[] {1, 6, 0, 5, 8};   or  = {1, 6, 0, 5, 8};
+List list = Arrays.asList(1, 6, 0, 5, 8);   
+Arrays.sort(x);
+Arrays.fill(x, 5);
+
+   Try to do these on my own first
+7.  find out the frequency of each element in array.    {1,3,5,6,7,4,1,3,5,3}  1:2,3:3,5:2,6:1...
+8.  position left rotate elements in array.     {10,20,30,40,50}  -> {20,30,40,50,10}
+9.  print all duplicate elements in the array. 
+10. print first unique element in array.
+11. print smallest and biggest number in the array.
+12. print all elements in the array that are on odd position.
+13. sort in ascending or descending order
+14. reverse the array without using 2nd array.
+
+new project called datastructures with arrays package, each question a seperate class file, write the quest in a comment at the top
+
+
+
+
+---------------------------------Day 5------------------Multithreading-------------------------------
+
+What is process and what is thread and their differences?
+
+	Thread is the smallest part of a process. Example: autosave and spellcheck in MS Word. Shares memory with main process.
+
+what is multithreading?
+
+	Having multiple threads executing simultaiously.
+
+What is the advantage of multithreading ?
+
+	Better performance from the application. Example: multiple users using the same process.
+
+How many ways we can create thread ?
+
+	2. Implement Runnable, or extend the Thread class. 
+	(Secret third way: pass an anonymous Runnable class.)
+
+Which approach is better ?
+
+	You must override the run() method in either case. Extending the Thread class, you might need to override other 
+	constructors or methods. You also will not be able to extend another class at the same time.
+
+Can we run same thread twice ?
+
+	We can't start a thread multiple times. We will get java.lang.IllegalThreadStateException
+
+t1.start();
+			//we can't run same thread twice.
+			t1.start();  //java.lang.IllegalThreadStateException
+What is thread priority?
+
+	Thread scheduler schedules the threads according to their priority.
+	We have 3 priorities - max , norm , min 
+	setPriority() method use to set priority for thread.
+	1 to 10 represent priority.
+	setPriority(10);,getPriority();
+	By default every thread has normal priority.
+	We have call set priority before calling start method.
+	Main thread also have by default normal priority.
+	
+What is Thread Life Cycle ?
+
+	When a Daddy thread and a Mommy thread love each other very much...
+
+What is the use of Join method ?
+
+	join() is used to put the current thread on hold until the specified thread finishes
+
+What is the use of yield method ?
+What is dead lock ?
+
+	When a thread is holding a resource and also waiting on a resource which is being held by another thread.
+
+What is thread scheduler in java ?
+
+	The part of the virtual machine that controls when threads will get processor cycles vs. other threads.
+
+What is the difference between start() and run() method call ?
+Can we overload run method ?
+
+	Yes, but only run() will be run by the thread scheduler.
+
+What will happen if we don’t override the Thread class run() method?
+
+	Nothing. Literally nothing will happen. Unless you just implemented Runnable and didn't override the method; then you will get an error.
+
+Can  we override start method of thread class ?
+
+	New threads will not be able to be created.
+
+What happen when we call run method explicitly?
+
+	It will run like a normal method.
+	
+ syncronized block    sysnchronized(the_object){ "your code" }
+ the disadvantage of synchronization is that it reduces performance.
+ 
+ Today's implementations:
+1. Create thread using runnable interface.
+2. Create thread using thread class.
+3. Create thread using annonmous class. 
+4. Implement join method.
+5. Prepare 1 implentation of data inconsistancy.
+6. Implement synchronization method 
+7. Implement synchronization block
+8. Implements wait, notify and notifyAll
+9. Implements dead lock example
+
+
+---------------------------------------Day 6--------------------------------------
+
+Volitile keyword: makes sure that the variable is updated in main memory every time instead of thread-local cache
+
+Immutable class: How to break immutablility + how to prevent immutable breaking  | Implement examples of this.
+
+talked about collections, Lists, Sets, 
+Comparators
+
+what is the internal working of a HashMap
+
+1.implements volatile keyword example. 
+2.How to break immutable class and how to fix that.
+3.add elements to arraylist and print them using for each.
+4.Implements Iterator example with list.
+5.implements List Iterator example with list Iterator.
+6.add elements in the map and print them using for each.
+7.print the map elements using entry set and iterator.
+8.perform Default sorting using tree set.
+9. custom sorting on strings type of treeset and sorting will be based on ascending of string length.
+10. add student objects in tree set basis on the descending order of their rollno.
+
+--------------------------------Day 7------------------------------------------
+
+Some features of Java 8
+FunctionalInterface cf = () -> { the code implementation }
+
+interface can now have a default implementation of its methods. 
+
+Utility class. methods that will be used widely in a project.
+Predicate interface: looks like this:
+
+interface Predicate<T>{
+public boolean test(T value);
+}    Why would we use this?
+
+Stream API : process data in a collections
+
+intermediate operation: operation on data before another operation on that same data.
+terminal operation: when you are converting your data into a different type.
+streams and be generated from or to Sets or collections or arrays
+
+Collection.stream().forEach(System.out::print());  
+:: is method reference       Class::method  
+
+stream.filter(Predicate)    a lambda expretion can be used directly in place of Predicate.  An example of intermediate operation
+stream.map(Function)  use a lambda expression to perform operation on each element of the data
+stream.sorted()   you may pass a Comparator or lambda function
+
+ blocking queue linked blocking queue + array blocking queue   datble finds?
+ 
+ 
+-------------------------------------Day 8 --------------------------------------------
+
+Interview Questions:
+ What is JDK,JRE,JVM
+What are the other ways to create an object other than creating as new object?
+Explain java.lang.OutOfMemoryError ?
+Which kind of memory is used for storing object member variables and function local variables ?
+Why Java don't use pointers ?
+What are various types of Class loaders used by JVM ?
+How are classes loaded by JVM ?
+Which memory areas does instance and static variables use ?
+Why a static block executes before the main method ?
+Can we override static method ?
+Why use this keyword ?
+When Need of super keyword ?
+What is the difference between this. (this dot) and this() (this off) ?
+Difference between static and final keyword ?
+Why main method is static ?
+Difference between non-static and static variable ?
+What is difference between super and this keyword ?
+Does Java Pass by Value or Pass by Reference ?
+What is a Constructor?
+Do we have Copy Constructor in Java?
+What is Constructor Chaining ?
+Can we call sub class constructor from super class constructor?
+What is No-arg constructor?
+How a no – argument constructor is different from default Constructor?
+What are private constructors and where are they used?
+When do we need Constructor Overloading?
+
+
+---------------------Day 9----------------------------------------
+
+Ques 1 - Given a sorted array of integers, return the low and high index of the given key.
+         Return -1 if not found. The array length can be in millions with lots of duplicates. 
+Ques 2 - Given an array of intervals as input where each interval has a start and end timestamps.
+      Input array is sorted by starting timestamps.
+      Merge overlapping intervals and return output array (list).
+      Eg:
+      Input: Intervals [(1, 5), (3, 7), (4, 6), (6, 8)]
+      Output: [(1, 8)]		 
+	  
+	  For each interval in the input list,
+		Step 1: check if the current element  value < the output interval y value. If it is, then it is overlapping
+		Step 2: Update last interval of output list with merged interval i.e. the max value between y1 & y2
+		Step 3: If it is not overlapping, add the current input interval element to the output list
+	  
+Ques 3 - Given an array, find the contiguous subarray with the largest sum.
+      Input: -4, 2,-5,1,2,3,6,-5,1
+      Output: the largest sum subarray starts at index 3 and ends at 6 and the largest sum is 12 
+Ques 4 -  Given three integer arrays sorted in ascending order, find the smallest number that is common in all three arrays.
+Ques 5 : Find second largest element in an array:
+     Input: {2, 3, 10, 6, 4, 8, 1}
+     Output: 8 
+Ques 6: Given two sorted linked lists, merge them such that resulting linked list is also sorted.
+     Input: List1: 4, 8, 15, 19        List2: 7, 9, 10, 16
+     Output:  4, 7, 8, 9, 10, 15, 16, 19
+
+
+Serial Stream vs Parallel Stream.   When to use parallel stream vs serial stream.
+Terminal vs intermediate Stream operations
+lazy operations, lazy processing : intermedeate operation that doesn't execute until a terminal operation is also called. 
+ Example: filter, map, actually all intermedeate stream operations.
+ 
+ java 8 interface changes: @FunctionalInterface annotation, default keyword allows specification of default behavior of interface method
+
+Daemon threads don't prevent the system from exiting.
+Explain different memory areas in JVM 
+Optional class
+Predicate, supplier, Function, Consumer
+
+//String cmd = "c:\\Program Files (x86)\\Microsoft Office\\Office15\\WINWORD.exe C:\\a.docx";
+    Process p = Runtime.getRuntime().exec(cmd);
+    p.waitFor();
+    System.out.println("Done");
+
+
+
+--------------------------------Day 10---------------------------------------
+
+HashMap internal workings?
+What is the difference between normal Collections and ConcurrentCollection?
+What is the difference between fail-fast and fail-safe?
+What is the difference between HashMap and ConcurrentHashMap?
+What is the difference between HashMap and HashTable?
+CopyOnWriteArrayList and CopyOnWriteArraySet?
+
+
+HashMap internal workings: Array of intitially 16 "buckets" expanding automatically, each bucket contains a LinkedList of elements with 
+	identical hashes, ie. "hash collision". The equals() method is used in the case of hash collision. After Java 8, after a threshold 
+	is reached in a bucket, it is converted from a LinkedList to a BinaryTree to imporove search time.
+ConcurrentCollection: Introduced around java 1.7. What is the difference between normal Collections and ConcurrentCollection? 
+	Collections has a few classes that are not synchronized, the ones that are do not perform well. Uses fail-fast iterators that will throw 
+	exceptions.  ConcurrentCollection is thread-safe, but also maintians performance. Implements fail-safe iterators that do not throw 
+	exceptions, because they work on a temporary copy of the data.
+What is the difference between HashMap and ConcurrentHashMap?  Intitial concurrancy level is 16 by default, because each bucket is locked 
+	individually. It does not lock anything for reading operations. Collections contains a method for generating a synchronized version
+	of your List, Set, Vector, Map, or HashMap. HashMap is not synchronized by default. ConcurrentHashMap does not allow a null object.
+	Null usually gets put at the 0th element.
+What is the difference between HashMap and HashTable? HashTable has every method synchronized, HashMap has no method synchronized. 
+	HashMap allows a null, HashTable does not and will throw a NullPointerException. HashMap was built after HashTable as an improvement
+	on performance.
+CopyOnWriteArrayList and CopyOnWriteArraySet? They are thread safe. When a writing method is called it creates an internal copy of the List
+	that accepts the changes and will eventually synchronize the changes to the original List. It doesn't use locking for reading?
+
+	
+word file. whole screen shared. Name in text file. 
+A: short answer. 3-4 line answer. 2 marks. 10 questions.
+B: Mid-level type questions. 3 marks each.
+C: 5 questions. 5 points each. coding questions.
+60 marks total
+2.5 hours max.
+submit text file.
+
+Coding questions on daily message as homework, to be checked in mocks
+in morning, get implementation
+teaching before lunch,
+teaching after lunch
+
+Homework:
+1.linear search
+2.Binary search
+new project Data structures, with new package with homework. Make it very Organized. 
+
+
+-----------------------------------------Day 11---------------------------------
+
+Create a stream 4 ways:
+	From an array:
+		Stream.of(arrayOfEmps);
+	
+	From a list object:
+		empList.stream();
+		
+	From individual objects:
+		Stream.of(arrayOfEmps[0], arrayOfEmps[1], arrayOfEmps[2]);
+		
+	Or from Stream.builder():
+		Stream.Builder<Employee> empStreamBuilder = Stream.builder();
+		empStreamBuilder.accept(arrayOfEmps[0]);
+		empStreamBuilder.accept(arrayOfEmps[1]);
+		empStreamBuilder.accept(arrayOfEmps[2]);
+		Stream<Employee> empStream = empStreamBuilder.build();
+		
+
+
+1.convert array [2,3,1,4,5,3] into stream and print
+2.remove vowel from string - Hello and print. 
+3.part 2 //get String as an output
+4.Filter all values greater than 2 in an array,then multiply each value by 3,then sum the values
+5.part 2 //do that without using sum method.
+6.convert all strings with length greater than 3 into uppercase strings,then sort alphabetically
+7.part 2 // get String[] as output.
+8.filter only the first 3 strings in {"Bus", "car", "bicycle", "train"}
+9.Remove all duplicate values in a list of numbers  without converting    (Stream.distinct())
+10.Reverse the string
+11.reverse array using stream
+12.remove all the spaces from string
+
+
+Spring framework:
+	*hibernate
+	*creational design patterns
+	*Spring Boot
+	Spring Core
+	Spring MVC - web apps
+	Spring ORM - 
+	Spring JDBC - Database connections
+	Spring AOP - business logic
+	Spring Security
+	*Micro Services and Kafka aand Spring Security
+	*DevOps tools
+	*Repositories
+	*Docker
+	
+	Spring Core: developed on top of j2ee api, supports modular programming
+
+Create maven project -> GroupID: com.apolis, ArtifactID: SpringBasics, Name: SpringBasics ->
+	pom.xml: add "<dependencies>
+	
+	new classes will go in src/main/java
+
+one class can use another by Inheritance or Association. This is tightly coupled.
+	Spring is loosely coupled. you will never need to extend spring classes into your work.
+	
+	A problem occurs when a signature or name of a class changes, if it was used somewhere else.
+	When the type of the object is specified, after the new keyword, and where the method is called.
+	
+	design pattern: most efficient solution for a recursive problem
+	Archetecture patterns
+	Structural design pattern: 
+	Behavioral design pattern:
+	Creational design pattern:
+	
+	Strategy design pattern: 1: Always use Association over Inheritance. 2: Always design for the interfaces
+		not for the classes. 3: Code should be open for extention, closed for modification	
+		
+	Object injection. you won't have to create a new object yourself. Allows us to make two classes completely
+		loosely coupled.
+		Create a spring bean configuration file. 
+		<bean id="employee" class="com.apolis.model.Employee">
+			<property name="ename" value="john" />
+			<property name="age" value="25" />
+			<property name="salary" value="50000" />
+		</bean>
+		
+		BeanFactory factory = new XmlBeanFactory(new 
+		ClassPathResource("com/apolis/common/application-context.xml"));
+		Employee emp = (Employee) factory.getBean("employee");
+		
+		<bean id="employee2" class="com.apolis.model.Employee">
+			<constructor-arg name="name" value="John"/>
+			<constructor-arg name="age" value="21"/>
+			<constructor-arg name="salary" value="35000"/>
+			<property name="company" ref="company" />
+		</bean>
+		<bean id="company" class="com.apolis.model.Company">
+			<property name="name" value="TCS" />
+			<property name="country" value="USA" />
+		</bean>
+
+
+
+-----------------------------------Day 12-------------------------------------------
+
+String handling:
+
+Anything in "" is created and stored in a string constant pool
+ String.intern() accesses reference to string literal.
+Strings that are the same value are actually different references to the same String objects in the pool.
+Strings are immutable for security reasons. Also, it creates a new object instead of changing the object to
+avoid changing other references to the same String. Also this makes them thread safe.
+
+StringBuffer is not immutable. It will make changes to the same container. Mutable, instead of immutable.
+StringBuffer does not override the equals() method. It is also synchronized.
+Also StringBuilder. StringBuilder is not thread-safe.
+Passwords should be stored in a char array, because if stored as a string, the old password would be still
+be in the pool. 
+concat() method only accepts strings as arguments. String.valueOf() accepts any type as an arguement.
+Integer.parseInt() will go the other way.
+
+1. What is a String?
+2. How many ways can we create a String object?
+3. What is the use of intern() method?
+4. What is the String pool?
+5. Why are String objects immutable in Java?
+6. What is the difference between String and StringBuffer?
+7. What is the difference between StringBuffer and StringBuilder?
+8. How to store a password in Java?
+9. What is the difference between '+' operator and String.concat() method?
+10. What is the use of valueOf() method?
+11. How to perform these conversions? primative into String,  Any wrapper class type into String?
+12. Convert String into any Wrapper class object type.
+
+
+Implementations:
+
+11, and 12
+equals() method
+ignoreCase()
+concat()
+toCharArray()
+indexOf()
+charAt()
+toLowerCase() toUpperCase()
+trim()
+subString()
+replace() replaceAll()
+split()
+
+
+IOC container: Inversion of Control. Created by BeanFactory upon creation to contain Beans 
+	and metadata. Responsible for managing lifecycle of beans and those objects.
+	BeanFactory or ApplicationContect (supports annotations) or others
+	ApplicationContext context = new ClassPathXmlApplicationContext();
+	
+Bean = Spring definition of a particular java object.
+
+Primative injection: using Constuctors or setter methods for primative value setting.
+Dependence injection: injecting another bean object as an object value. 2 types of 
+	dependence injection: setter injection and constructor injection.
+
+Collection Injection: 
+	<property name="stores">
+		<list value-type="java.lang.String">
+			<value>Aushan</value>
+			<value>Walmart</value>
+		</list>
+	</property>
+	<set>, <map> also exists.
+	<map key-type="java.lang.Integer" value-type="java.lang.String">
+		<entry key="1" value="Aushan"/>
+		<entry key="2" value="Walmart"/>
+	</map>
+	
+	Properties collection:   Uses Properties (implements Map)
+	<constructor-arg name="stores">
+		<props>
+			<prop key="1">Aushan</prop>
+			<prop key="2">Walmart</prop>
+		</props>
+	</constructor-arg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+package com.apolis.main;
+
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
+
+import com.apolis.model.Employee;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		
+		BeanFactory fact = new XmlBeanFactory(new 
+				ClassPathResource("com/apolis/common/application-context.xml"));
+		Employee emp = (Employee) fact.getBean("employee");
+		
+		System.out.println(emp);
+	}
+
+}

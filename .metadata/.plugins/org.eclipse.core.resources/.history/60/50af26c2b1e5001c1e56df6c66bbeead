@@ -1,0 +1,8 @@
+package com.apolis.Day12_June6;
+
+public interface Adult {
+
+	public Animal getMyPet();
+
+	public void setMyPet(Animal myPet);
+}

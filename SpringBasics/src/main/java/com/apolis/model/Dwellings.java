@@ -1,0 +1,45 @@
+package com.apolis.model;
+
+import java.util.List;
+import java.util.Map;
+
+public class Dwellings implements Rentables{
+
+	private List<Unit> unitList;
+	private String complexName;
+	private List<String> toolList;
+	private Map<Integer, String> occupationList;
+
+	public Dwellings(String complexName) {
+		this.complexName = complexName;
+	}
+
+	public List<String> getToolList() {
+		return toolList;
+	}
+
+	public void setToolList(List<String> toolList) {
+		this.toolList = toolList;
+	}
+	
+	public String getComplexName() {
+		return complexName;
+	}
+
+	public Map<Integer, String> getOccupationList() {
+		return occupationList;
+	}
+
+	public void setOccupationList(Map<Integer, String> occupationList) {
+		this.occupationList = occupationList;
+	}
+
+	public List<Unit> getUnitList() {
+		return unitList;
+	}
+
+	public void setUnitList(List<Unit> unitList) {
+		this.unitList = unitList;
+	}
+
+}

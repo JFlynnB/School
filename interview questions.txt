@@ -1,0 +1,531 @@
+What is JDK,JRE,JVM
+
+	The JVM is the program that runs a java program. It is a virtual machine written for the platform
+	that it's on, that loads and executes Java code.
+	The JRE contains a JVM as well as many libraries that may be useful.
+	A JDK contains a JRE, as well as tools for compiling and developing.
+
+What are the other ways to create an object other than creating as new object?
+
+	An objects clone() method can return a new copy of that object.
+	An object can be generated from desearialization.
+	Using the newInstance() methods of the Class or Constructor classes.
+	Reflection: accessing data of a class without 
+
+Explain java.lang.OutOfMemoryError ?
+
+	Occurs when you're out of memory.
+	In more detail: When the JVM tries to allocate memory for an object in heap memory, and there is no more left
+	this exception will be thrown. If this occurs, the program or its libraries are possibly holding references to
+	objects that are no longer being used. To solve, you can try increasing the heap size, but probably you will
+	need to find the memory leak.
+	This is distinct from a StackOverflowError, where there is no more memory left in the stack.
+
+Which kind of memory is used for storing object member variables and function local variables ?
+
+	Objects and their member variable are stored in the heap memory. Local variables contained in functions are
+	stored in the stack (staack frame) until the function is done being executed.
+
+Why Java don't use pointers ?
+
+	For speed and security, Java does not use pointers. Pointers could access any spot in memory,
+	which is a security concern for private data. Using a pointer also takes a small amount of 
+	memory and processor cycles. It's not much but it could affect speed in certain situations.
+
+What are various types of Class loaders used by JVM ?
+
+	Bootstrap Class Loader - Programmed in native code, loads rt.jar and the classes contained therein.
+	Extensions Class Loader - loads classes for the JDK extentions directory
+	System / Application Class Loader - loads classes for the current program, from the current classpath
+
+How are classes loaded by JVM ?
+
+	See previous question. The JVM loads the class Bytecode. Then the JVM verifies the Bytecode. The JVM also 
+	looks for security concerns and things that might be viruses at this stage. Then the JIT (Just-In-Time) 
+	Compiler compiles the class bytecode into native machine code to increase performance. Note that the JIT
+	Compiler does not necessarily compile every method call; only the ones that are called often.
+
+Which memory areas does instance and static variables use ?
+
+	They are both in the heap, but static variables are stored in the permanent generation area, and instance
+	variables are located in either the young or old generation areas of the heap.
+
+Why a static block executes before the main method ?
+
+	A static block is executed when the class it's in is loaded into memory. Since this is still in the setup of the 
+	program, it is necessarily executed before the program's main method.
+
+Can we override static method ?
+
+	Static methods can be overloaded (different arguments) but they cannot be overridden. They are bonded at compile-time.
+	If you declare a static method with the same signature as one in a parent class (you can do this), which one is called
+	depends on if you are treating the object as an object of its parent type or the child type. You can also declare a 
+	non-static method with the same name, but this is also not considered overriding. This is called method hiding.
+
+Why use this keyword ?
+
+	To remove confusion between class data members and parameters with the same name. It refers to the current object
+	in a method or constructor.
+
+When Need of super keyword ?
+
+	You would use the super keyword when you need to refer to data member of an immedeate parent.
+
+What is the difference between this. (this dot) and this() (this off) ?
+
+	this. refers to a member of the current object. this() referes to a constructor of the same class as the current object.
+
+Difference between static and final keyword ?
+
+	Static means that there is only one copy of the member in memory. Final means that it cannot change once set.
+
+Why main method is static ?
+
+	So that the JVM can call it without instantiating the containing class.
+
+Difference between non-static and static variable ?
+
+	Static variables are shared among all instances of objects from that class. They belong to the class itself. 
+	Instance variables are not shared among objects.
+
+What is difference between super and this keyword ?
+
+	this referes to the current intatiation of the object. super refers to it's parent class
+
+Does Java Pass by Value or Pass by Reference ?
+
+	Both. Primative data types are passed by value; everything else is passed by reference.
+	(Note that the reference itself is passed as the value of a memory address. So the answer is 
+	kind of "value only" in a sense.) - Coding with John, YouTube, "Java is Always Pass by value"
+
+What is a Constructor?
+
+	A constructor is the code that is run whenever an object is instantiated.
+	"The main purpose of constructors is to set the initial state of an object, when the
+	object is created using the new operator." - (A Programmer's Guide, Khalid Mughal)
+	
+Do we have Copy Constructor in Java?
+
+	Java supports copy constructors, but you have to write it yourself; 
+	it isn't created by default like the default constructor is. 
+	A copy constuctor is a constructor that accepts another instance of that same object
+	as an arguement and sets all of its fields to be the same. (See cloning).
+
+What is Constructor Chaining ?
+
+	Where one constructor is called inside another (possibly inside another....)
+
+Can we call sub class constructor from super class constructor?
+
+	No. I didn't think so. The reason being that a parent class cannot assume that it is also a particular type of child.
+
+What is No-arg constructor?
+
+	A No-args Constructor is an implemented constructor that does not accept any arguements
+
+How a no – argument constructor is different from default Constructor?
+
+	A no-arg constructor is implemented by the programmer. The default constructor is created by the compiler
+	and only initializes the data members to their default values.
+
+What are private constructors and where are they used?
+
+	They can only be used within the class. 
+	They are used in static member-only classes 
+	OR used with static utility or Constant classes
+	OR used to serve singleton classes  (When you want to make it so there is only one (or another number) of these objects)
+	OR used to memeber creation using factory methods
+	OR used to prevent subclassing.
+
+When do we need Constructor Overloading?
+
+	When we need to instantiate classes with different sets of data. Or more generally, to give more flexibility when
+	creating an object, if you only have some data to set at the time of object creation, the rest can be default.
+
+Final method?
+
+	A method that cannot be overridden.
+	
+jdk source class
+
+	String
+	
+	
+
+
+
+What is JDK,JRE,JVM
+What are the other ways to create an object other than creating as new object?
+Explain java.lang.OutOfMemoryError ?
+Which kind of memory is used for storing object member variables and function local variables ?
+Why Java don't use pointers ?
+What are various types of Class loaders used by JVM ?
+How are classes loaded by JVM ?
+Which memory areas does instance and static variables use ?
+Why a static block executes before the main method ?
+Can we override static method ?
+Why use this keyword ?
+When Need of super keyword ?
+What is the difference between this. (this dot) and this() (this off) ?
+Difference between static and final keyword ?
+Why main method is static ?
+Difference between non-static and static variable ?
+What is difference between super and this keyword ?
+Does Java Pass by Value or Pass by Reference ?
+What is a Constructor?
+Do we have Copy Constructor in Java?
+What is Constructor Chaining ?
+Can we call sub class constructor from super class constructor?
+What is No-arg constructor?
+How a no – argument constructor is different from default Constructor?
+What are private constructors and where are they used?
+When do we need Constructor Overloading?
+
+Can we override static method in Java?
+
+	No. Not in any true sense.
+
+Can we overload a static method in Java?
+
+	Yes, absolutely.
+ 
+Can we override a private method in Java? 
+
+	No. Only the method is only accessible to the parent class. Attempting to do so will throw a 
+	compile-time error.
+
+What is method hiding in Java? 
+
+	To hide a method means that an unqualified call to that name in the scope of this class 
+	(i.e. in the body of any of its methods, or when qualified with the name of this class) 
+	will now call a completely different function, requiring a qualification to access the 
+	static method of the same name from the parent class.
+	In other words, only "overriding" a static method is considered method hiding.
+
+What are the Fundamental principles of oops?
+
+	Encapsulation: Data is protected from use outside an object.
+	
+	Abstraction: Properties and behaviors are hidden inside a class or package, how they do what
+		they do is not important for the user. Only the contract of the class is available.
+	
+	Inheritance: Objects can be of more than one kind of class. It means that you create a (child) 
+	class by deriving from another (parent) class. This way, we form a hierarchy.
+	
+	Polymorphism: Objects may be more than one kind of thing. An ArrayList is also a List and also a Collection
+	and also a Set, for example. Also, you can call some of the same methods for any of these types and they will still 
+	work for that object. Simply put, polymorphism gives a way to use a class exactly like its parent so there’s no 
+	confusion with mixing types. But each child class keeps its own methods as they are.
+
+What is the default class modifier?
+
+	A class with no other scope specification can only be seen in the same package.
+
+What are the different method access modifiers?
+
+	Public,   Protected,     Default,    Private
+
+What is the use of a final modifier on a class?
+
+	When that class should not be extendable by any other class.
+
+What is the use of a final modifier on a method?
+
+	When that method should not be able to be overridden by any inheriting class.
+
+Which package is always imported by default?
+
+	java.lang
+
+Can I import same package/class twice? Will the JVM load the package twice at runtime?
+
+	You can make the import call twice but the compiler will only load it once.
+
+What is a Java package and how is it used?
+
+	A package in java is an encapsulation mechanism that can be used to group related classes, interfaces,
+	enums, and subpackages 
+
+Explain the usage of Java packages.
+
+	They describe a directory structure. The (.) in a package name denotes a sub-folder. (*) refers to all contents of a
+	folder.
+
+Difference between Public, Private, Default and Protected ?
+
+	Public,    same package subclass, same package non-subclass, different package subclass, different package non-subclass
+	Protected, same package subclass, same package non-subclass, different package subclass    
+	Default,   same package subclass, same package non-subclass   
+	Private,   only within that class 
+
+Can we reduce the visibility of the overridden method ?
+
+	No. You cannot reduce the visiblity of an overridden method. Otherwise a child class would not be 
+	as usable as the parent class. This violates the OOP principle of inheritance.
+
+Which access specifier can be used with Class ?
+
+	Default, Public, and Private. A private class must be an inner class.
+
+What will happen if we make the constructor private ?
+
+	It will only be usable inside the class.
+
+Can we declare an abstract method private ?
+
+	No. It wouldn't be inheritable, and an abstract method needs to be inheritable.
+
+What is strictfp keyword and when do you use it?
+
+	Use it on a class or method that must perform floating point calculations consistently 
+	accross platforms. This will be consistent, but will not necessarily be more precise.
+
+What is instanceOf operator?
+
+	The instanceof operator will return true if (Object) is of type (Class). Usage:
+	boolean var = (Integer) x instanceof Number;  
+
+
+What is process and what is thread and their differences?
+what is multithreading?
+
+	The process of executing two or more threads simultaneously for maximum utilization of the CPU.
+
+What is the advantage of multithreading ?
+
+	Seriously? It makes modern computing possible. Without multithreading I might as well
+	be feeding punchcards into a machine to run a program.
+
+How many ways we can create thread?
+
+	The answer they are looking for is 2. Extend the Thread class, or implement Runnable.
+	Secret 3rd option: pass a lambda expression containing the code you want to run as able
+	thread to a new Thread object. It will be treated as instantiation of a Runnable object
+	because Runnable is a functional interface and the only one that Thread is expecting in its 
+	constructor. 
+	My favorite answer: One. When a Thread has a Runnable object, you can call start(). In all 
+	three of the previous cases, you have a Thread and give it a Runnable. In the case where you
+	extend Thread, since Thread implements Runnable it will have itself; you just need to make sure
+	that run() does something.
+
+Which approach is better ?
+
+	IDK. Lambdas make it look pretty clean. Unless you need to re-use the code in run(). In that case
+	you should probably just save the lamda function to a variable and insert that when you need it.
+
+Can we run same thread twice ?
+
+	Not the same Thread object. Thread.start() can only be called once. You can use
+	the same Runnable over and over again, but it must be passed to a new thread each time.
+
+What is thread priority?
+
+	Threads with higher priority will be given more CPU cycles by the thread scheduler. 
+	(Although, not more than they can actually use.)
+
+What is Thread Life Cycle ?
+
+	A new Thread is instantiated. -> start() is called -> It is Runnable ->
+	-> the thread scheduler calls the run() method -> Now it is Running ->
+	during the running, the thread my have to Wait if it comes to a synchronized 
+	resource that is already being used, or is explicitly told to wait ->
+	In such case it will be Waiting -> eventually it will reach the end of its
+	execution -> Then it will be considered Dead.
+
+What is the use of Join method ?
+
+	Waits for this thread to die, before continuing.
+
+What is the use of yield method ?
+
+	Suggests to the thread scheduler that the current thread is willing to yeild its 
+	current use of the processor to other threads. The scheduler is free to ignore this.
+	Not often used.
+
+What is the use of sleep method?
+
+	Thread.sleep(long millis) causes the thread to temporarily stop running, then resume
+	after the specified number of milliseconds.
+
+What is dead lock ?
+
+	When one thread is holding a lock on one resource while waiting on another resource that
+	is still being held by another thread that is waiting on the resource held by the first thread
+	then neither thread can continue or release their resources, so they just sit there.
+	That is called dead lock.
+
+What is thread scheduler in java ?
+
+	It is the process which monitors and contols the starting and stopping of all other threads.
+
+What is the difference between start() and run() method call ?
+
+	Calling start() indicates to the thread scheduler that the thread is ready to begin.
+	The run() method is what actually gets called by the thread scheduler.
+
+Can we overload run method ?
+
+	Yes you absolutely can. Any other declarations than run() will not be run by
+	the thread scheduler, but they can tottally still be there.
+
+What will happen if we don’t override the Thread class run() method?
+
+	Literally nothing. You can start such a thread and it will die immedeately, because 
+	overriding run() is how you tell a thread what to do and you haven't told it to do anything.
+
+Can  we override start method of thread class ?
+
+	Yes, in which case you will then call super.start(), but you probably shouldn't override start().
+
+What happen when we call run method explicitly?
+
+	It will run. Once. In the current thread. Then whatever is after the run() call will execute.
+
+What is  the purpose of wait,notify and notify all?
+
+	Being methods of the Object class, they are shared across all objects. Their purpose it to communicate
+	with the lock monitor of that object, and thus with other threads that are using that objects lock monitor.
+	wait() will cause the current thread to stop processing and give up the lock on that object's monitor until 
+	another thread sends the notification that the monitor is available again.
+	notify() and notifyAll() are how you send those notifications. They should be called after a thread is done with a resource.
+
+What is inter thread communication ? 
+
+	See above. Threads can also communicate with each other by checking variables.
+
+What Synchronization and what is the advantage and disadvantage of synchronization?
+
+	Sychronization locks a method or block of code off so that only one thread can run it at a time.
+	The advantage is that you will prevent a data error that might occur beween reading and writing 
+	variables, or any other atomic operation. The disadvantage is that other threads will not be able to
+	share that resource at the same timem so performance will suffer.
+
+Synchronized block vs synchronized method ?
+
+	synchronizing a method uses the containing object's lock monitor. A synchronized block will
+	let you specify an object whose lock monitor you want to use.
+
+What is daemon thread ?
+
+	A thread with the lowest priority. They do things in the background that serve the other 
+	threads. You make a daemon do things that should be done when there is time, but aren't
+	otherwise critical.
+
+What is the difference notify and notify all ?
+
+	Oh, glad I didn't answer this above. notify() notifys a single thread that might be waiting that it can continue.
+	notifyAll notifies all threads that might be waiting on a resource. If you have a lot of threads, this might
+	be a bad idea. It depends on the type of resource and other opportunities for synchronization.
+
+HashMap internal workings?
+What is the difference between normal Collections and ConcurrentCollection?
+What is the difference between fail-fast and fail-safe?
+What is the difference between HashMap and ConcurrentHashMap?
+What is the difference between HashMap and HashTable?
+CopyOnWriteArrayList and CopyOnWriteArraySet?
+
+
+HashMap internal workings: Array of intitially 16 "buckets" expanding automatically, each bucket contains a LinkedList of elements with 
+	identical hashes, ie. "hash collision". The equals() method is used in the case of hash collision. After Java 8, after a threshold 
+	is reached in a bucket, it is converted from a LinkedList to a BinaryTree to imporove search time.
+ConcurrentCollection: Introduced around java 1.7. What is the difference between normal Collections and ConcurrentCollection? 
+	Collections has a few classes that are not synchronized, the ones that are do not perform well. Uses fail-fast iterators that will throw 
+	exceptions.  ConcurrentCollection is thread-safe, but also maintians performance. Implements fail-safe iterators that do not throw 
+	exceptions, because they work on a temporary copy of the data.
+What is the difference between HashMap and ConcurrentHashMap?  Intitial concurrancy level is 16 by default, because each bucket is locked 
+	individually. It does not lock anything for reading operations. Collections contains a method for generating a synchronized version
+	of your List, Set, Vector, Map, or HashMap. HashMap is not synchronized by default. ConcurrentHashMap does not allow a null object.
+	Null usually gets put at the 0th element.
+What is the difference between HashMap and HashTable? HashTable has every method synchronized, HashMap has no method synchronized. 
+	HashMap allows a null, HashTable does not and will throw a NullPointerException. HashMap was built after HashTable as an improvement
+	on performance.
+CopyOnWriteArrayList and CopyOnWriteArraySet? They are thread safe. When a writing method is called it creates an internal copy of the List
+	that accepts the changes and will eventually synchronize the changes to the original List. It doesn't use locking for reading?
+	
+What is the difference between arrays and collection framework ?
+
+	Arrays have very low levels of functionality. Collections have very high levels of
+	sophisticated functionality.
+
+What is the difference between Collection and Collections?
+
+	Collection is an interface that defines how a collection should function. 
+	Collections is a utility class, with extra functions for handling Collections.
+
+What is the root interface in the collection hierarchy?
+
+	Iterable.
+
+What are the primary interfaces in the Java Collections Framework?
+
+	List, Set, Queue
+
+what is collection hirerarchy ?
+
+	Iterable -> Collection -> (List -> (), Queue -> (), Dequeue -> (), Set 
+
+differnce between arraylist and linklist ?
+
+	ArrayList stores data in an array that will get rewritten for add or modify operations.
+	LinkedList stores data in Nodes that for a doubly linked list. deleting, adding, and modifying
+	data is very easy. Less easy to read a random index.
+
+differnce between arraylist and vector ?
+
+	Vectors have all of their methods synchronized. They are thread-safe.
+
+differnce between list and set ?
+
+	Sets are not necessarily ordered, and may not contain duplicates. Only one null
+	Lists are stored in some kind of order, and may contain duplicate elements. multiple null
+
+difference between hashset and tree set ?
+
+	A HashSet containes a hash table that may not necessarily be in any particular order. Permits null.
+	A TreeSet stores data in the nodes of a binary tree that is keeps sorted at all times.
+
+difference between hashset and linked hash set ?
+
+	A HashSet stores data in an array of LinkedLists.
+	A LinkedHashSet stores data in a doubly linked list that remains in the order in which it was added.
+
+differnce between comparable and comparator ?
+
+	Both are interfaces. Comparable lets one object compare itself to another of the same type.
+	Comparator defines a class that will compare two objects.
+
+custom shorting example by comparator ?
+what is the internal working of hashmap ?
+
+	Array of intitially 16 "buckets" expanding automatically, each bucket contains a LinkedList of elements with 
+	identical hashes, ie. "hash collision". The equals() method is used in the case of hash collision. After Java 8, after a threshold 
+	is reached in a bucket, it is converted from a LinkedList to a BinaryTree to imporove search time.
+
+difference between iterator and list iterator, spliterator?
+
+	An iterator only moves in one direction.
+	A listIterator can move forward or back but the "cursor" will only point between elements, not at them directly.
+	Spliterator allows parallel processing
+
+perform sorting on integer type collection using custom comparator ?
+Which are the collection classes that are synchronized or thread-safe?
+
+	Stack, Vector, and HashTable 
+
+Which are the classes that implement List and Set interface?
+
+	List : ArrayList, LinkedList, Stack, Vector
+	Set: HashSet, LinkedHashSet, TreeSet
+	
+
+What is an Iterator in the Java Collections Framework?
+
+	An iterator is a "cursor" that can return the elements of a collection in order, or tell you if there is another element
+
+What is the best way to reverse a List in Collections?
+
+	java.util.Collections.reverse(list);
+	
+
+
+

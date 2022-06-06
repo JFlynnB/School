@@ -1,0 +1,22 @@
+package day11.Streams;
+
+import java.util.Arrays;
+import java.util.function.Function;
+
+/*
+ * 6.convert all strings with length greater than 3 into uppercase strings,then sort alphabetically
+ * 
+ * 7.part 2 // get String[] as output.
+ */
+public class SIX_UpperSort {
+
+	public static void main(String[] args) {
+		
+		String[] input = { "My", "suffering", "left", "me", "sad", "and", "gloomy"};
+		
+		Arrays.stream(input).map( s -> {if(s.length() > 3) s.toUpperCase();
+		return s;}).sorted().forEach(System.out::print);;
+
+	}
+
+}

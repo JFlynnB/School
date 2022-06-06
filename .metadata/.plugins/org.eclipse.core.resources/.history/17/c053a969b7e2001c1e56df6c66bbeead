@@ -1,0 +1,7 @@
+package com.apolis.model;
+
+public interface ArrayGenerator {
+	
+	public int[] getArray(int length, int numberRange);
+
+}

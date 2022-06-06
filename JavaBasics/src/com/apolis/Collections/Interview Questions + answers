@@ -1,0 +1,76 @@
+what is collection hirerarchy ?
+
+	* List, Queue, and Set are interfaces that implement Collection, which itself implements Iterable.  
+	* ArrayList, LinkedList, and Vector are classes that implement List. LinkedList also implements Deque
+	* Class PriorityQueue implements Queue. Interface Deque implements Queue. 
+	* ArrayDeque extends LinkedList and implements Deque.
+	* Classes HashSet and LinkedHashSet implement Set. TreeSet implements SortedSet, which itself implements Set.
+
+differnce between arraylist and linklist ?
+
+	* ArrayList uses dynamic array to store objects. LinkedList uses doubly linked list.
+	* Deleting or swapping an element is slow in ArrayList because it needs to rewrite the array. Linkedlist just needs to repoint references
+	* ArrayList can only act as a List. LinkedList implements List, Queue, and Deque.
+	* ArrayList is better (faster) for storing and accessing data. LinkedList is better for manipulating data (sorting, deleting, changing)
+	* ArrayList: contiguous memory. LinkedList: non-contiguous memory.
+	* ArrayList default capacity: 10. LinkedList default capacity: N/A 
+	* Memory overhead is higher in LinkedList for large quantities of elements.
+
+differnce between arraylist and vector ?
+
+	* ArrayList: not synchronized.  Vector: synchronized
+	* ArrayList upsizes by 50% at need. Vector upsizes by 100% when capacity exceeded.
+	* Vector is a legacy class. ArrayList was introduced in JDK 1.2
+	* Being non-synchronized makes ArrayList faster. 
+	* ArrayList uses Iterator interface to traverse elements. Vector uses Iterator or Enumeration
+	* ArrayList should be discouraged in multi-threading IF elements will be added or deleted.
+
+differnce between list and set ?
+
+	* Positional access:  List(YES)   Set(NO)
+	* Duplicates:         List(YES)   Set(NO)
+	* Order:          List(ORDERED)   Set(Depends on implementation)
+	* Set allows unique elements only (only one null, too)
+
+difference between hashset and tree set ?
+
+	* HashSet uses a HashTable. TreeSet uses a tree structure.
+	* HashSet allows a null; TreeSet does not. 
+	* HashSet is not ordered; TreeSet is kept in a sorted self-balancing binary search tree.
+	* HashSet uses equals() method. TreeSet uses compareTo() method.
+	* For sorted set, it is better to add elements to a HashSet then convert it into a TreeSet than to add elements to a tree sequentially
+	* TreeSet uses Red-Black tree algorithm
+
+difference between hashset and linked hash set ?
+
+	* LinkedHashSet lets us iterate through the elements in the order in which they were inserted.
+
+differnce between comparable and comparator ?
+
+	* Comparable provides sorting by single data member. Comparator allows sorting by multiple data members.
+	* Comparable affects original class. Comparator does not.
+	* Comparable provides compareTo(Object) method. Comparator provides compare(object1, object2) method.
+	* java.lang.Comparable vs. java.util.Comparator
+	* Comparable sorting by Collections.sort(List). Comparator sorting by Collections.sort(List, Comparator).
+
+custom shorting example by comparator ?
+
+	Custom code
+
+what is the internal working of hashmap ?
+
+	* HashMap contains an array of initially 16 "buckets" containing: (int hash) (key) (value) (next Node)
+	* hashCode() method returns the memory reference of an object in integer form. hashCode() is used to calculate the index.
+	* HashMap calculates the hash of the key, which is used to determine the index in which it will be placed.
+	* The same hash method is used to look up the value later
+	* In the case of identical indexes, key/value pairs are added as LinkedList nodes in that same "bucket" index.
+	
+
+difference between iterator and list iterator ?
+
+	* Iterator is one direction only. ListIterator is bi-directional.
+	* Iterator can be implicitly "pointing at" an element. ListIterator implicitly "points" strictly between elements.
+
+perform sorting on integer type collection using custom comparator ?
+
+	Custom code

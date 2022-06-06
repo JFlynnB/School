@@ -1,0 +1,62 @@
+package day12.Singletons;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
+public class Four_Best extends Thread{
+
+	public static void main(String[] args) {
+		
+		BestSingle mySingle = BestSingle.getThis();
+		try {
+			breakByReflection(mySingle);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+	}
+	
+	public void run() {
+		BestSingle mySingle = BestSingle.getThis();
+		mySingle.printMessage();
+	}
+	private static void breakByReflection(BestSingle orginalsingleton)
+	        throws ClassNotFoundException, NoSuchMethodException,
+	        InstantiationException, IllegalAccessException,
+	        InvocationTargetException {
+
+	    Class<?> singletonClass = Class.forName("BestSingle");
+	    @SuppressWarnings("unchecked")
+	    Constructor<BestSingle> constructor = (Constructor<BestSingle>) singletonClass
+	            .getDeclaredConstructor();
+	    constructor.setAccessible(true);
+	    BestSingle s = constructor.newInstance();
+	    System.out.println(orginalsingleton.equals(s));
+	}
+
+}
+
+//uses Double Checked Locking
+class BestSingle{
+	private static volatile BestSingle theOne = null;
+	private String message;
+	private int count = 0;
+	
+	private BestSingle() {
+		message = "The object has been instantiated ";
+		count++;
+	}
+	
+	public static BestSingle getThis() {
+		if(theOne == null) {
+			synchronized (BestSingle.class) { //have to use the class's monitor because
+				if(theOne == null) {            //the object doesn't yet have a monitor
+					theOne = new BestSingle(); //We check again inside the synchronize block
+				}                             //so that we can be certain that it's still null
+			}
+		}
+		return theOne;
+	}
+	public void printMessage() {
+		System.out.println(message + count + " times.");
+	}
+}

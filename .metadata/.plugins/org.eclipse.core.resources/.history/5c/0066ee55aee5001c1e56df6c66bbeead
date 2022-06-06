@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="employee1" class="com.apolis.model.Employee">
+			<property name="name" value="john" />
+			<property name="age" value="25" />
+			<property name="salary" value="50000" />
+	</bean>
+	<bean id="employee" class="com.apolis.model.Employee">
+	</bean>
+	
+	<bean id="tenent1" class="com.apolis.model.MyTenent">
+			<property name="firstName" value="Patrick" />
+			<property name="lastName" value="Billinghurst" />
+			<property name="rent" value="800" />
+			<property name="unit" ref="unit1" />
+	</bean>
+	
+	<bean id="unit1" class="com.apolis.model.MyUnit">
+			<constructor-arg name="buildingNo" value="8" />
+			<constructor-arg name="apartmentNo" value="2" />
+	</bean>
+	
+	<bean id="theApartments" class="com.apolis.model.Dwellings">
+		<constructor-arg name="complexName" value="Paradise Homes"/>
+		<property name="toolList">
+			<list value-type="java.lang.String">
+				<value>Hammer</value>
+				<value>Saw</value>
+				<value>Phillips Screwdriver</value>
+				<value>Flathead Screwdriver</value>
+				<value>Tape Measure</value>
+				<value>Cordless Drill</value>
+			</list>
+		</property>
+		<property name="occupationList">
+			<map key-type="java.lang.Integer" value-type="java.lang.String">
+				<entry key="1" value="John"/>
+				<entry key="2" value="Lisa"/>
+				<entry key="0" value="Patrick"/>
+			</map>
+		</property>
+		<property name="unitList">
+				<list value-type="com.apolis.model.MyUnit">
+					<ref bean="unit1"/>
+					<bean class="com.apolis.model.MyUnit">
+						<constructor-arg name="buildingNo"><value>2</value></constructor-arg>
+						<constructor-arg name="apartmentNo"><value>3</value></constructor-arg>
+					</bean>
+					<bean class="com.apolis.model.MyUnit">
+						<constructor-arg name="buildingNo"><value>3</value></constructor-arg>
+						<constructor-arg name="apartmentNo"><value>1</value></constructor-arg>
+					</bean>
+			</list>
+			
+		</property>
+	</bean>
+	
+	
+
+</beans>

@@ -1,0 +1,13 @@
+package day11.Streams;
+
+/*
+ * 9.Remove all duplicate values in a list of numbers  without converting
+ */
+public class NINE_Distinct {
+
+	public static void main(String[] args) {
+		
+		int[] array = {};
+	}
+
+}

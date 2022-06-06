@@ -1,0 +1,10 @@
+package day10.Searches;
+
+public class BinarySearchQuickSort {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

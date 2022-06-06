@@ -1,0 +1,40 @@
+This is a deck class prototype
+
+package com.apolis.javabasicsDay3_May20;
+import java.util.ArrayList;
+/*Demonstration of Interfaces */
+
+public class Deck implements Sortable{
+
+	ArrayList<String> cards = new ArrayList<String>();
+	
+	public Deck() {
+		cards.add("2 of Hearts");
+		cards.add("6 of Diamonds");
+		cards.add("4 of Clubs");
+	}
+	
+	public static void main(String[] args) {
+		Deck myDeck = new Deck();
+		myDeck.readDeck();
+
+	}
+	
+	void readDeck() {
+		for(String card : cards) {
+			System.out.println(card);
+		}
+	}
+
+	@Override
+	public void sort() {
+		
+		
+	}
+	
+
+}
+
+interface Sortable{
+	void sort();
+}

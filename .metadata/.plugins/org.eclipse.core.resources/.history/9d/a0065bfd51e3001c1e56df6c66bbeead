@@ -1,0 +1,66 @@
+package day12;
+/*
+ * Implementations:
+
+11, and 12
+equals() method
+ignoreCase()
+concat()
+toCharArray()
+indexOf()
+charAt()
+toLowerCase() toUpperCase()
+trim()
+subString()
+replace() replaceAll()
+split()
+11. How to perform these conversions? primative into String,  Any wrapper class type into String?
+12. Convert String into any Wrapper class object type.
+
+ */
+public class StringPractice {
+
+	public static void main(String[] args) {
+		
+		int a = 55;  //Primative into String
+		String s1 =  Integer.toString(a);
+		System.out.println(s1);
+		
+		//Any Wrapper Class into String
+		Boolean b = false;
+		String s2 = b.toString();
+		System.out.println(s2);
+		
+		//Convert String into Wrapper class object
+		String s3 = "true";
+		Boolean b3 = Boolean.valueOf(s3);
+		System.out.println(b3.toString());
+		
+		//equals() method
+		String s4 = "55";
+		System.out.println("Example 4 : " + s4.equals(s1)); //They are the same
+		
+		System.out.println();
+		
+		System.out.println();
+		
+		System.out.println();
+		
+		System.out.println();
+		
+		System.out.println();
+		
+		System.out.println();
+		
+		System.out.println();
+		
+		System.out.println();
+		
+		System.out.println();
+		
+		System.out.println();
+		
+		
+	}
+
+}

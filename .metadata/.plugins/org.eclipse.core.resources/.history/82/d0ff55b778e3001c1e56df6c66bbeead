@@ -1,0 +1,28 @@
+package day12.Singletons;
+
+public class THREE_Eager {
+
+	public static void main(String[] args) {
+		ThirdSingle mySingle = ThirdSingle.getThird();
+		mySingle.printMessage();
+	}
+
+}
+
+class ThirdSingle{
+	
+	private static ThirdSingle theOne = new ThirdSingle();
+	private String message;
+	
+	private ThirdSingle() {
+		message = "This object exists.";
+	}
+	
+	public static ThirdSingle getThird() {
+		return theOne;
+	}
+	
+	public void printMessage() {
+		System.out.println(message);
+	}
+}

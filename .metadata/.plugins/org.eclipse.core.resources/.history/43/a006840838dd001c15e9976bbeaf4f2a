@@ -1,0 +1,14 @@
+package com.apolis.javabasicsDay7_May26;
+
+/* 5.implement predicate ,and(), or(), negate() methods with any example.
+ * 
+ * 7.stream api implementations
+ */
+public class SEVEN_StreamAPI {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

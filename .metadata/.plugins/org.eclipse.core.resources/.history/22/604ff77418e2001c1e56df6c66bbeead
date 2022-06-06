@@ -1,0 +1,119 @@
+package day10.Searches;
+
+import java.util.Random;
+
+/*
+ * In this example we will implement both Quick Sort and then a Binary Search.
+ * Code will be recycled from the last example, but much of it will be 
+ * in discreet methods
+ */
+public class BinarySearchQuickSort {
+
+	public static void main(String[] args) {
+		
+		int[] array = makeArray(100, 26);     //Make the array to these specifications
+		
+		System.out.println("The array before sorting:");
+		printArray(array);                    //Display the array
+		
+		quicksort(array, 0, array.length - 1);    //Sort the array
+		
+		System.out.println("The array after sorting:");
+		printArray(array);                       //Display the array after sorting
+		                  
+		int lookingFor = 10;                      //The element we are looking for
+		int foundAt = binarySearch(array, 0, array.length - 1, lookingFor);
+		
+		if(foundAt == -1) {
+			System.out.println("The array did not contain " + lookingFor);
+		}else {
+			System.out.println(lookingFor + " first occurs at index " + foundAt);
+		}
+
+	}
+	
+	//A very quick and easy to implement search algorithm. Completes in O log n time.
+	//
+	public static int binarySearch(int[] array, int lowIndex, int highIndex, int target) {
+		if(highIndex >= lowIndex) {   //if this is not true, then we are not actually searching 
+			                         //a part of the array, and we have not found the target
+			int middle = lowIndex + (highIndex - lowIndex) / 2;  //finding the middle of the indicated range
+			
+			if(array[middle] == target) //Check if this is it.
+				return middle;          //return it if it is.
+			if(array[middle] < target)
+				return binarySearch(array, middle +1, highIndex, target);
+			else
+				return binarySearch(array, lowIndex, middle - 1, target);
+			
+			
+		}
+		return -1;
+	}
+	
+	public static void quicksort(int[] array, int lowIndex, int highIndex) {
+		
+		if(lowIndex < highIndex) {
+			
+			int pivotIndex = partition(array, lowIndex, highIndex);
+			
+			
+			quicksort(array, lowIndex, pivotIndex -1);
+			quicksort(array, pivotIndex + 1, highIndex);
+		}
+	}
+	//Will only be used by the quicksort method.
+	private static int partition(int[] array, int lowIndex, int highIndex) {
+		
+		int pivot = array[highIndex];   //We would get better performance if the pivot is
+		                                //chosen at random.
+		int pivotPosition = lowIndex - 1; //The right position of the pivot found so far
+		
+		for(int i = lowIndex; i <= highIndex; i++) {
+			
+			if(array[i] < pivot) {   //if the current element is smaller than the pivot
+				pivotPosition++;
+				swap(array, pivotPosition, i);
+			}
+		}
+		
+		swap(array, pivotPosition + 1, highIndex);
+		return pivotPosition + 1;
+	}
+	
+	//This only swaps two elements in an array of ints.
+	//It also assumes that the two given indexes are not
+	//out of bounds.
+	private static void swap(int[] array, int a, int b) {
+		int temp = array[a];
+		array[a] = array[b];
+		array[b] = temp;
+	}
+	
+	//prints all of the elements of an array to the console in an orderly fashion,
+	//with a new line every 25 elements.
+	public static void printArray(int[] array) {              
+		for(int i = 0; i < array.length; i++) {
+			System.out.print(" " + array[i]);
+			if(i != (array.length - 1)) {
+				System.out.print(",");
+			}
+			if(i % 25 == 0 && i != 0) {
+				System.out.print("\n");
+			}
+		}
+		System.out.print("\n");          
+	}
+	
+	//Generates an array with "size" elements and fills it with
+	//numbers between 0 and "range"
+	public static int[] makeArray(int size, int range) {
+		Random rand = new Random();
+		int[] array = new int[size];
+		for(int i = 0; i < array.length; i++) {
+			array[i] = rand.nextInt(range);              //Fills the array with values between 0 and 20
+		}
+		return array;
+	}
+
+}

@@ -1,0 +1,45 @@
+package day12.Singletons;
+
+public class Four_Best extends Thread{
+
+	public static void main(String[] args) {
+		Four_Best one = new Four_Best();
+		Four_Best two = new Four_Best();
+		
+		one.start();
+		two.start();
+
+	}
+	
+	public void run() {
+		BestSingle mySingle = BestSingle.getThis();
+		mySingle.printMessage();
+	}
+
+}
+
+//uses Double Checked Locking
+class BestSingle{
+	private static volatile BestSingle theOne = null;
+	private String message;
+	private int count = 0;
+	
+	private BestSingle() {
+		message = "The object has been instantiated ";
+		count++;
+	}
+	
+	public static BestSingle getThis() {
+		if(theOne == null) {
+			synchronized (BestSingle.class) { //have to use the class's monitor because
+				if(theOne == null) {            //the object doesn't yet have a monitor
+					theOne = new BestSingle(); //We check again inside the synchronize block
+				}                             //so that we can be certain that it's still null
+			}
+		}
+		return theOne;
+	}
+	public void printMessage() {
+		System.out.println(message + count + " times.");
+	}
+}

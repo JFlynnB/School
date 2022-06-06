@@ -1,0 +1,89 @@
+package com.apolis.javabasicsDay7_May26;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+/* 5.implement predicate ,and(), or(), negate() methods with any example.
+ * 
+ * 7.stream api implementations
+ */
+public class SEVEN_StreamAPI {
+
+	public static void main(String[] args) {
+		
+		List<String> shoppingList = Arrays.asList("Chicken", "Potatoes", "Carrots", "Ginger", "Flour", "Oil", "Salt");
+		
+		/* Print out each element of the List */
+		//      List is a Collection.
+		//     /           method of the Collection interface that returns an instantiation of a Stream object
+		//    /           /          method of the Stream interface that accepts a Consumer, which is a functional interface
+		//   /           /          /           :: is used to reference a method. Here the we set the implementation of Consumer.accept(T t)
+		//  /           /          /              /
+		shoppingList.stream().forEach(System.out::println);
+		
+
+		//2.  Arrays.stream(T[] array);
+		
+		Arrays.stream(new String[] {"Chicken, ", "Potatoes, ", "Carrots, ", "Ginger, ", "Flour, ", "Oil, \n"}).forEach(System.out::print);
+		
+
+		//3. Stream.of(value1,value2, ...);
+		//    Even though Stream is an interface, Stream.of() has an implementation
+		//    /     You can just pass values to this and you will get a Stream. It's awesome! They have to be the same type, though
+		//   /     /
+		Stream.of("Chicken", "Potatoes", "Carrots", "Ginger", "Flour", "Oil", "Salt").forEach(System.out::println);
+
+		//4. string.chars.map(x->(char)x);
+		String myName = "Billinghurst"; //This is my last name in String form
+		//
+		//
+		//           A CharSequence interface method implemented by the String class. Returns an IntStream (interface)
+		//          /   containing the numbers of the individual characters
+		//         /          Takes an IntFunction (functional interface {apply(int x)}) and returns a Stream.
+		//        /          /          A lambda expression that just casts the ints in the IntStream to chars.
+		//       /          /          /        Takes another functional interface.
+		//      /          /          /        /
+		myName.chars().mapToObj(x->(char)x).forEach((c) -> System.out.println(c) );
+			
+		//Terminal operations convert stream into different formats
+		
+		//toList
+		List<String> values = Arrays.asList("USA","INDIA","CHINA","RUSSIA","POLAND").stream()
+		.collect(Collectors.toList());
+		System.out.println(values);
+
+		//To set
+		 Collection<String> values2 = Arrays.asList("CHINA","INDIA","CHINA","RUSSIA","INDIA").stream()
+						              .collect(Collectors.toCollection(TreeSet::new));
+				 System.out.println(values2);
+				 
+		//To Array
+				 String[] values3 = Arrays.asList("CHINA","INDIA","CHINA","RUSSIA","INDIA").stream()
+						              .toArray(String[]::new);
+				 System.out.println(Arrays.toString(values3));
+		
+
+		//Intermediate operation:
+		 Arrays.asList("USA","INDIA","CHINA","RUSSIA","POLAND").stream()
+				 .filter(str->str.length()>3).forEach(System.out::println);
+
+		 Arrays.stream(new Integer[] {2,4,5,6,7,8,9,12}).filter(x->x%2==0)
+				 .map(x->(x+1)).forEach(System.out::println);
+
+		 Arrays.stream(new Integer[] {9,2,8,4,5,12,6,7}).sorted()
+				 .forEach(System.out::println);
+
+		 Arrays.stream(new Integer[] {9,2,8,4,5,12,6,7})
+				 .sorted((Comparator<Integer>)(x,y)->(Integer)x.compareTo(y))
+				 .forEach(System.out::println);
+
+
+	}
+
+}

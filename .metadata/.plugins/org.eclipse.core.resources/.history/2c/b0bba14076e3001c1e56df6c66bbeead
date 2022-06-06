@@ -1,0 +1,30 @@
+package day12.Singletons;
+
+public class ONE_Singleton {
+
+	public static void main(String[] args) {
+		FirstSingleton mySingle = FirstSingleton.getIt();
+		mySingle.printMessage();
+
+	}
+
+}
+
+ class FirstSingleton{
+	private static FirstSingleton theObject;
+	private String message;
+	private FirstSingleton() {
+		this.message = "This Object has been intantiated." ;
+	}
+	
+	public static FirstSingleton getIt() {
+		if(theObject == null) {
+			theObject = new FirstSingleton();
+		}
+		return theObject;
+	}
+	
+	public void printMessage() {
+		System.out.println(message);
+	}
+}

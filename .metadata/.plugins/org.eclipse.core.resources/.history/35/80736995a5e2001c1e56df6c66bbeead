@@ -1,0 +1,22 @@
+package day11.Streams;
+
+import java.util.Arrays;
+import java.util.function.Predicate;
+
+/*
+ * 8.filter only the first 3 strings in {"Bus", "car", "bicycle", "train"}
+ */
+public class EIGHT_Filter {
+	static int count;      //Important for the Predicate
+
+	public static void main(String[] args) {
+		
+		String[] input = { "Bus", "car", "bicycle", "train"};
+		count = 0;                                       
+		Predicate<String> pred = s -> count++ > 2;
+		
+		Arrays.stream(input).filter(pred)
+		.forEach(System.out::print);           
+	}
+
+}

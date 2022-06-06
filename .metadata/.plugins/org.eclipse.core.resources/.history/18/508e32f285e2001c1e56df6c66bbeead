@@ -1,0 +1,17 @@
+package day11.Streams;
+
+import java.util.Arrays;
+
+/*
+ * 2.remove vowel from string - Hello and print.
+ */
+public class TWO_VowelRemoval {
+
+	public static void main(String[] args) {
+		
+		String input = new String("Hello");
+		
+		input.chars().filter( x -> x != 97 && x != 101 && x != 105 && x != 111 && x != 117 ).forEach(System.out::print);
+	}
+
+}
